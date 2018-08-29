@@ -26,7 +26,8 @@ const deploy = async() => {
       from: accounts[0]
     });
 
-  console.log('Deployed to', result.options.address);
+  console.log(interface);
+  console.log('Contract deployed to', result.options.address);
 };
 
 deploy();

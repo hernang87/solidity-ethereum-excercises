@@ -3,6 +3,7 @@ pragma solidity ^0.4.17;
 contract Lottery {
     address public manager;
     address[] public players;
+    address public winner;
 
     constructor() public payable {
         manager = msg.sender;
@@ -21,7 +22,8 @@ contract Lottery {
     function pickWinner() public restricted {
         uint index = random() % players.length;
         players[index].transfer(address(this).balance);
-
+        // Saves the winner
+        winner = players[index];
         // Reset players after playing
         players = new address[](0);
     }
